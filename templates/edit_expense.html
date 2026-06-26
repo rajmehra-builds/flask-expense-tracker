@@ -1,1 +1,59 @@
+{% extends "base.html" %}
 
+{% block title %}
+Edit Expense
+{% endblock %}
+
+{% block content %}
+
+<div class="card"><h1>Edit Expense</h1>
+
+<br>
+
+<form method="POST">
+
+    <input
+        type="number"
+        name="amount"
+        value="{{ expense[2] }}"
+        class="form-control"
+        required
+    >
+
+    <input
+        type="text"
+        name="category"
+        value="{{ expense[3] }}"
+        class="form-control"
+        required
+    >
+
+    <input
+        type="text"
+        name="note"
+        value="{{ expense[4] }}"
+        class="form-control"
+    >
+
+    <input
+        type="date"
+        name="date"
+        value="{{ expense[5] }}"
+        class="form-control"
+        required
+    >
+
+    <button
+        type="submit"
+        class="btn btn-primary"
+    >
+        Update Expense
+    </button>
+
+    <a href="/dashboard" class="btn btn-warning">
+        Cancel
+    </a>
+
+</form>
+
+</div>{% endblock %}

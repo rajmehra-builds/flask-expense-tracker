@@ -1,1 +1,107 @@
+{% extends "base.html" %}
 
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h1>Welcome, {{ username }}</h1><br><a href="/add_expense" class="btn btn-success">
+    + Add Expense
+</a><br><br>
+
+<form method="GET"><input
+    type="text"
+    name="search"
+    placeholder="Search category..."
+    value="{{ request.args.get('search', '') }}"
+    class="form-control"
+>
+
+<button
+    type="submit"
+    class="btn btn-primary"
+>
+    Search
+</button>
+
+<a href="/dashboard" class="btn btn-warning">
+    Clear
+</a>
+
+</form><br><div style="display:flex; gap:20px; flex-wrap:wrap;"><div class="card" style="flex:1; min-width:250px;">
+
+    <h2>Total Spent</h2>
+
+    <br>
+
+    <h1>₹{{ total }}</h1>
+
+</div>
+
+<div class="card" style="flex:1; min-width:250px;">
+
+    <h2>Total Expenses</h2>
+
+    <br>
+
+    <h1>{{ count }}</h1>
+
+</div>
+
+</div><div class="card"><h2>Your Expenses</h2>
+
+{% if expenses %}
+
+<table>
+
+    <tr>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Note</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for expense in expenses %}
+
+    <tr>
+
+        <td>₹{{ expense[2] }}</td>
+        <td>{{ expense[3] }}</td>
+        <td>{{ expense[4] }}</td>
+        <td>{{ expense[5] }}</td>
+
+        <td>
+
+            <a
+                href="/edit_expense/{{ expense[0] }}"
+                class="btn btn-primary"
+            >
+                Edit
+            </a>
+
+            <a
+                href="/delete_expense/{{ expense[0] }}"
+                class="btn btn-danger"
+            >
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+    <br>
+
+    <p>No expenses found.</p>
+
+{% endif %}
+
+</div>{% endblock %}

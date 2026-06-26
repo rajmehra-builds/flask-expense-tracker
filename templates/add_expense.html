@@ -1,1 +1,58 @@
+{% extends "base.html" %}
 
+{% block title %}
+Add Expense
+{% endblock %}
+
+{% block content %}
+
+<div class="card"><h1>Add Expense</h1>
+
+<br>
+
+<form method="POST">
+
+    <input
+        type="number"
+        name="amount"
+        placeholder="Amount"
+        class="form-control"
+        required
+    >
+
+    <input
+        type="text"
+        name="category"
+        placeholder="Category"
+        class="form-control"
+        required
+    >
+
+    <input
+        type="text"
+        name="note"
+        placeholder="Note"
+        class="form-control"
+    >
+
+    <input
+        type="date"
+        name="date"
+        class="form-control"
+        required
+    >
+
+    <button
+        type="submit"
+        class="btn btn-success"
+    >
+        Save Expense
+    </button>
+
+    <a href="/dashboard" class="btn btn-warning">
+        Cancel
+    </a>
+
+</form>
+
+</div>{% endblock %}
