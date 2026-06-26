@@ -1,1 +1,55 @@
+{% extends "base.html" %}
 
+{% block title %}
+Signup
+{% endblock %}
+
+{% block content %}
+
+<div class="card"><h1>Create Account</h1>
+
+<br>
+
+{% if error %}
+    <div class="alert">
+        {{ error }}
+    </div>
+{% endif %}
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="name"
+        placeholder="Choose Username"
+        class="form-control"
+        required
+    >
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Choose Password"
+        class="form-control"
+        required
+    >
+
+    <button
+        type="submit"
+        class="btn btn-success"
+    >
+        Create Account
+    </button>
+
+</form>
+
+<br>
+
+<p>
+    Already have an account?
+    <a href="/login">
+        Login
+    </a>
+</p>
+
+</div>{% endblock %}
