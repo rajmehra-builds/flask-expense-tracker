@@ -31,7 +31,9 @@ CREATE TABLE IF NOT EXISTS expenses(
 """)
 conn.commit()
 conn.close()
-
+@app.route("/")
+def home():
+    return redirect("/login")
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
