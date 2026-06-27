@@ -1,4 +1,5 @@
 import sqlite3
+import os
 from flask import Flask, render_template, session, request, redirect
 from werkzeug.security import (
     generate_password_hash,
@@ -6,7 +7,10 @@ from werkzeug.security import (
 )
 
 app = Flask(__name__)
-app.secret_key = "mysecretkey"
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "dev-secret-key"
+)
 
 conn = sqlite3.connect("database.db")
 cur = conn.cursor()
